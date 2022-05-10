@@ -17,3 +17,14 @@
 function getRndInteger(min,max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
+const bombe = [];
+
+// Il computer deve generare 16 numeri casuali tra 1 e 100.
+
+while(bombe.length < 16) {
+    const boom = getRndInteger(1, 100);
+    if(bombe.includes(boom) === false ) {
+        bombe.push(boom);
+    }
+}
