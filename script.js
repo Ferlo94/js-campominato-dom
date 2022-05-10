@@ -28,3 +28,15 @@ while(bombe.length < 16) {
         bombe.push(boom);
     }
 }
+
+let bombaEsplosa = false;
+
+while(bombaEsplosa === false) {
+    const numeroUtente = Number(prompt("Inserisci un numero"));
+    
+    if (bombe.includes(numeroUtente)) {
+    bombExploded = true;
+    }
+}
+
+console.log("GAME OVER");
