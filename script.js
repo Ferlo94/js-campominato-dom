@@ -11,3 +11,9 @@
 // con difficoltà 1 => tra 1 e 80
 // con difficoltà 2 => tra 1 e 50
 
+
+// -----------------------------------------------------
+
+function getRndInteger(min,max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
