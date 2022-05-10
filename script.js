@@ -24,18 +24,31 @@ const bombe = [];
 
 while(bombe.length < 16) {
     const boom = getRndInteger(1, 100);
+
     if(bombe.includes(boom) === false ) {
         bombe.push(boom);
     }
 }
 
 let bombaEsplosa = false;
+let tentativi = [];
 
-while(bombaEsplosa === false) {
-    const numeroUtente = Number(prompt("Inserisci un numero"));
+while(!bombaEsplosa && tentativi.lenght < 84) {
+
+    let numeroUtente;
+
+    do {
+        numeroUtente = Number(prompt("Inserisci un numero"));
+    } while (isNaN(numeroUtente) || numeroUtente < 1 || numeroUtente > 100);
     
     if (bombe.includes(numeroUtente)) {
-    bombExploded = true;
+    bombaEsplosa = true;
+
+    } else if (tentativi.includes(numeroUtente)) {
+        alert("Il numero e' gia' stato inserito!");
+
+    } else {
+        tentativi.push(numeroUtente);
     }
 }
 
