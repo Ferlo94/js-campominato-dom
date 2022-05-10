@@ -18,38 +18,44 @@ function getRndInteger(min,max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-const bombe = [];
+const bombs = [];
+const numberBombs = 2;
+const numberAttempts = 5;
 
-// Il computer deve generare 16 numeri casuali tra 1 e 100.
+while(bombs.length < numberBombs) {
+    const bomb = getRndInteger(1, 100);
 
-while(bombe.length < 16) {
-    const boom = getRndInteger(1, 100);
-
-    if(bombe.includes(boom) === false ) {
-        bombe.push(boom);
+    if(bombs.includes(bomb) === false ) {
+        bombs.push(bomb);
     }
 }
 
-let bombaEsplosa = false;
-let tentativi = [];
+console.log(bombs);
 
-while(!bombaEsplosa && tentativi.lenght < 84) {
+let bombExploded = false;
+let attempts = [];
 
-    let numeroUtente;
+while(!bombExploded && attempts.lenght < numberAttempts) {
+
+    let userNumber;
 
     do {
-        numeroUtente = Number(prompt("Inserisci un numero"));
-    } while (isNaN(numeroUtente) || numeroUtente < 1 || numeroUtente > 100);
+        userNumber = Number(prompt("Inserisci un numero"));
+    } while (isNaN(userNumber) || userNumber < 1 || userNumber > 100);
     
-    if (bombe.includes(numeroUtente)) {
-    bombaEsplosa = true;
+    if (bombs.includes(userNumber)) {
+        bombExploded = true;
 
-    } else if (tentativi.includes(numeroUtente)) {
+    } else if (attempts.includes(userNumber)) {
         alert("Il numero e' gia' stato inserito!");
 
     } else {
-        tentativi.push(numeroUtente);
+        attempts.push(userNumber);
     }
 }
 
-console.log("GAME OVER");
+if (bombExploded) {
+    alert(`GAME OVER. Il tuo punteggio e'${attempts.length}`)
+} else {
+    alert("HAI VINTO!");
+}
