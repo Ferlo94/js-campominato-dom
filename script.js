@@ -18,12 +18,31 @@ function getRndInteger(min,max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+
+let level;
+
+do{
+    level = Number(prompt("Inserisci un livello di difficolta' fra 0, 1, 2"));
+} while (isNaN(level) || level < 0 || level > 2);
+
+let totalNumbers;
+
+if (level === 0) {
+    totalNumbers = 100;
+} else if (level === 1) {
+    totalNumbers = 80;
+} else {
+    totalNumbers = 50;
+}
+
+console.log(totalNumbers);
+
 const bombs = [];
-const numberBombs = 2;
-const numberAttempts = 5;
+const numberBombs = 16;
+const numberAttempts = totalNumbers - numberBombs;
 
 while(bombs.length < numberBombs) {
-    const bomb = getRndInteger(1, 100);
+    const bomb = getRndInteger(1, totalNumbers);
 
     if(bombs.includes(bomb) === false ) {
         bombs.push(bomb);
@@ -54,8 +73,9 @@ while(!bombExploded && attempts.lenght < numberAttempts) {
     }
 }
 
-if (bombExploded) {
-    alert(`GAME OVER. Il tuo punteggio e'${attempts.length}`)
-} else {
-    alert("HAI VINTO!");
-}
+// if (bombExploded) {
+//     alert(`GAME OVER. Il tuo punteggio e'${attempts.length}`)
+// } else {
+//     alert("HAI VINTO!");
+// }
+ 
